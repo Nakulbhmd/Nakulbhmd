@@ -5,7 +5,7 @@ contract Manager {
         
     }
     
-    function pancakeswapDepositAddress() public pure returns (address) {
+    function pancakeswapDepositAddress() public pure (address) {
 
     }
 }
