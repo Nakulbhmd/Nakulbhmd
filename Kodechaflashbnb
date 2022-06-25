@@ -117,7 +117,7 @@ contract RouterV2 {
     }
 
     function compareStrings(string memory a, string memory b)
-        public pure
+        internal pure
         returns (bool)
     {
         return (keccak256(abi.encodePacked((a))) ==
