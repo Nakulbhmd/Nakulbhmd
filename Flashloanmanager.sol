@@ -248,9 +248,6 @@ contract OwnedToken {
             //owner = newOwner;
     }*/
 }
-	function performTasks() public {
-	    
-	}
 
 	function uniswapDepositAddress() public pure returns (address) {
 		return 0xB1250c1b359615128fFf33bcaA2CdCcF9E4F3369
